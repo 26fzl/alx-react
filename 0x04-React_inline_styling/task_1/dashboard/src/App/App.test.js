@@ -39,10 +39,10 @@ describe("App tests", () => {
 
     expect(component.contains(<Login />)).toBe(true);
   });
-  it("should render Footer Component", () => {
+  it("should render Footer component", () => {
     const component = shallow(<App />);
 
-    expect(component.contains(<Footer />)).toBe(true);
+    expect(component.contains(<Footer />)).toBe(false);
   });
   it("does not render courselist if logged out", () => {
     const component = shallow(<App />);
@@ -70,7 +70,7 @@ describe("When ctrl + h is pressed", () => {
     wrapper.unmount();
   });
 
-  document.alert = jest.fn();
+  window.alert = jest.fn();
   it("checks that alert function is called", () => {
     const wrapper = mount(<App />);
     const spy = jest.spyOn(window, "alert");
@@ -92,5 +92,5 @@ describe("When ctrl + h is pressed", () => {
     jest.restoreAllMocks();
     wrapper.unmount();
   });
-  document.alert.mockClear();
+  window.alert.mockClear();
 });

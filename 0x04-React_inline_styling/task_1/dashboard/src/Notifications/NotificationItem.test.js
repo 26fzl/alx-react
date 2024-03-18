@@ -1,14 +1,6 @@
 import React from "react";
 import NotificationItem from "./NotificationItem";
 import { shallow } from "enzyme";
-import { StyleSheetTestUtils } from "aphrodite";
-
-beforeEach(() => {
-  StyleSheetTestUtils.suppressStyleInjection();
-});
-afterEach(() => {
-  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
-});
 
 describe("rendering components", () => {
   it("renders NotificationItem component without crashing", () => {
@@ -21,7 +13,9 @@ describe("rendering components", () => {
     const wrapper = shallow(<NotificationItem />);
 
     wrapper.setProps({ type: "default", value: "test" });
-    expect(wrapper.html()).toEqual('<li data-notification-type="default">test</li>');
+    expect(wrapper.html()).toEqual(
+      '<li data-notification-type="default">test</li>'
+    );
   });
 
   it('renders correct html from  html="<u>test</u>" props', () => {

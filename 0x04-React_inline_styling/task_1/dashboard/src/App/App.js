@@ -1,14 +1,42 @@
 import React from "react";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import Login from "../Login/Login";
-import CourseList from "../CourseList/CourseList";
 import Notifications from "../Notifications/Notifications";
-import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
+import Header from "../Header/Header";
+import Login from "../Login/Login";
+import Footer from "../Footer/Footer";
+import CourseList from "../CourseList/CourseList";
 import BodySection from "../BodySection/BodySection";
-import { StyleSheet, css } from "aphrodite";
+import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import PropTypes from "prop-types";
 import { getLatestNotification } from "../utils/utils";
+import { StyleSheet, css } from "aphrodite";
+
+const styles = StyleSheet.create({
+  AppBody: {
+    fontFamily: "Arial, Helvetica, sans-serif",
+    minHeight: "45vh",
+    fontSize: "1rem",
+    height: "100vh",
+    maxWidth: "100vw",
+    padding: "1rem",
+  },
+
+  flexHeader: {
+    position: "relative",
+    display: "flex",
+    justifyContent: "space-between",
+    borderBottom: "3px solid #e0354b",
+    height: "15rem",
+    flexWrap: "wrap-reverse",
+  },
+
+  "App-footer": {
+    borderTop: "3px solid #e0354b",
+    fontSize: "1rem",
+    padding: "1rem",
+    textAlign: "center",
+    fontStyle: "italic",
+  },
+});
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +44,14 @@ class App extends React.Component {
 
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
+
+  handleKeyPress = (e) => {
+    if (e.ctrlKey && e.key === "h") {
+      alert("Logging you out");
+      // console.log("Logging you out");
+      this.props.logOut();
+    }
+  };
 
   listCourses = [
     { id: 1, name: "ES6", credit: 60 },
@@ -29,13 +65,6 @@ class App extends React.Component {
     { id: 3, type: "urgent", html: getLatestNotification() },
   ];
 
-  handleKeyPress(e) {
-    if (e.ctrlKey && e.key === "h") {
-      e.preventDefault();
-      alert("Logging you out");
-      this.props.logOut();
-    }
-  }
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress);
   }
@@ -43,13 +72,15 @@ class App extends React.Component {
   componentWillUnmount() {
     document.removeEventListener("keydown", this.handleKeyPress);
   }
-
   render() {
     return (
       <React.Fragment>
-        <div className={css(styles.App)}>
-          <div className="heading-section">
-            <Notifications listNotifications={this.listNotifications} />
+        <div className={css(styles.AppBody)}>
+          <div className={css(styles.flexHeader)}>
+            <Notifications
+              displayDrawer
+              listNotifications={this.listNotifications}
+            />
             <Header />
           </div>
           {this.props.isLoggedIn ? (
@@ -63,25 +94,18 @@ class App extends React.Component {
           )}
           <BodySection title="News from the school">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis at tempora odio, necessitatibus repudiandae reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo ipsa
-              iste vero dolor voluptates.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perspiciatis at tempora odio, necessitatibus repudiandae
+              reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo
+              ipsa iste vero dolor voluptates.
             </p>
           </BodySection>
-          <Footer />
+          <Footer className={css(styles["App-footer"])} />
         </div>
       </React.Fragment>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  App: {
-    height: "100vh",
-    maxWidth: "100vw",
-    position: "relative",
-    fontFamily: "Arial, Helvetica, sans-serif",
-  },
-});
 
 App.defaultProps = {
   isLoggedIn: false,
