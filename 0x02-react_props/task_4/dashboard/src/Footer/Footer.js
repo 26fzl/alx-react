@@ -6,7 +6,9 @@ function Footer() {
   return (
     <>
       <div className="App-footer">
-        Copyright {getFullYear()} - {getFooterCopy()}
+        <p>
+          Copyright {getFullYear()} - {getFooterCopy()}
+        </p>
       </div>
     </>
   );

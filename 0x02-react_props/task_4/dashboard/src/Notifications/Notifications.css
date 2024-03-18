@@ -1,19 +1,15 @@
 .Notifications {
-  padding: 1em;
-  border: 2px dashed red;
-  position: absolute;
-  top: 2.5em;
-  right: 0;
+  border: dashed 2px #e0354b;
+  padding: 1rem;
 }
 
-.notification-header {
-  display: flex;
-  justify-content: space-between;
+/* li[data="default"] {
+  color: blue;
 }
 
-.menuItem {
-  text-align: right;
-}
+li[data="urgent"] {
+  color: red;
+} */
 
 [data-notification-type="default"] {
   color: blue;
@@ -22,4 +18,14 @@
 [data-urgent],
 [data-notification-type="urgent"] {
   color: red;
+}
+
+.div-flex {
+  display: flex;
+  flex-direction: column;
+  /* float: right; */
+}
+
+.menuItem {
+  text-align: right;
 }

@@ -2,25 +2,24 @@ import React from "react";
 import App from "./App";
 import { shallow } from "enzyme";
 
-describe("App tests", () => {
-  it("renders without crashing", () => {
-    const component = shallow(<App />);
-
-    expect(component).toBeDefined();
+describe("App Componeent Tests", () => {
+  it("Renders without crashing", () => {
+    const app = shallow(<App />);
+    expect(app).toBeDefined();
   });
-  // it('should render a div with the class App-header', () => {
-  // 	const component = shallow(<App />);
 
-  // 	expect(component.find('.App-header')).toBeDefined();
-  // });
-  // it('should render a div with the class App-body', () => {
-  // 	const component = shallow(<App />);
+  it("renders a div with the class App-header", () => {
+    const app = shallow(<App />);
+    expect(app.find(".App-header")).toBeDefined();
+  });
 
-  // 	expect(component.find('.App-body')).toBeDefined();
-  // });
-  // it('should render a div with the class App-footer', () => {
-  // 	const component = shallow(<App />);
+  it("renders a div with the class App-body", () => {
+    const app = shallow(<App />);
+    expect(app.find(".App-body")).toBeDefined();
+  });
 
-  // 	expect(component.find('.App-footer')).toBeDefined();
-  // });
+  it("renders a div with the class App-footer", () => {
+    const app = shallow(<App />);
+    expect(app.find(".App-footer")).toBeDefined();
+  });
 });

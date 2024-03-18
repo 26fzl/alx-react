@@ -24,7 +24,7 @@ function App(isLoggedIn) {
   return (
     <React.Fragment>
       <div className="App">
-        <div className="heading-section">
+        <div className="flex-header">
           <Notifications listNotifications={listNotifications} />
           <Header />
         </div>
