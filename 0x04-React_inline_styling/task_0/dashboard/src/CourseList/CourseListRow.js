@@ -13,7 +13,7 @@ const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
 	return (
 		<tr style={normalRowStyle}>
 			{isHeader ? (
-				textSecondCell === null ? (
+				textSecondCell === undefined ? (
 					<th style={headerStyle} colSpan={2}>
 						{textFirstCell}
 					</th>
@@ -41,7 +41,8 @@ CourseListRow.propTypes = {
 
 CourseListRow.defaultProps = {
 	isHeader: false,
-	textSecondCell: null,
+	textSecondCell: undefined, // Change null to undefined
 };
 
 export default CourseListRow;
+
