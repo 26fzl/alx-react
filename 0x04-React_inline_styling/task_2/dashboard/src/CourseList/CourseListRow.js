@@ -13,26 +13,33 @@ const styles = StyleSheet.create({
 });
 
 const CourseListRow = ({ isHeader, textFirstCell, textSecondCell }) => {
-	return (
-		<tr className={isHeader ? css(styles.header) : css(styles.normal)}>
-			{isHeader ? (
-				textSecondCell === null ? (
-					<th colSpan={2}>{textFirstCell}</th>
-				) : (
-					<>
-						<th>{textFirstCell}</th>
-						<th>{textSecondCell}</th>
-					</>
-				)
-			) : (
-				<>
-					<td>{textFirstCell}</td>
-					<td>{textSecondCell}</td>
-				</>
-			)}
-		</tr>
-	);
+    return (
+        <tr className={isHeader ? css(styles.header) : css(styles.normal)}>
+            {isHeader ? (
+                textSecondCell === null ? (
+                    <th colSpan={2}>{textFirstCell}</th>
+                ) : (
+                    <>
+                        <th>{textFirstCell}</th>
+                        <th>{textSecondCell}</th>
+                    </>
+                )
+            ) : (
+                <>
+                    {textSecondCell === null ? (
+                        <td colSpan={2}>{textFirstCell}</td>
+                    ) : (
+                        <>
+                            <td>{textFirstCell}</td>
+                            <td>{textSecondCell}</td>
+                        </>
+                    )}
+                </>
+            )}
+        </tr>
+    );
 };
+
 
 CourseListRow.propTypes = {
 	isHeader: PropTypes.bool,
