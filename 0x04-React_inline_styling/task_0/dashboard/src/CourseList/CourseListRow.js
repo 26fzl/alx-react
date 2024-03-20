@@ -41,7 +41,7 @@ CourseListRow.propTypes = {
 
 CourseListRow.defaultProps = {
 	isHeader: false,
-	textSecondCell: undefined, // Change null to undefined
+	textSecondCell: null, // Change undefined to null
 };
 
 export default CourseListRow;
